@@ -1,0 +1,218 @@
+{% extends 'administrator/adm_index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{block.super}}
+<div class="container-fluid container-md">
+    <div class="row">
+        <div class="col">
+          
+            <h5><i class="fa-solid fa-users"></i> &nbsp Registered User:
+              <button type="button" class="btn btn-warning btn-sm ">
+                <a href="#" class="text-decoration-none">{{tot_user.count}}</a>
+                </button>
+            </h5>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                <thead class="bg-success text-white">
+                    <tr>
+                    <th scope="col">SL No</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">School</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="text-dark">
+                    {% for user in page_obj %}
+                      <tr>
+                      <th scope="row">{{ page_obj.start_index|add:forloop.counter0}}</th>
+                      <td>{{user.username}}</td>
+                      <td>{{user.email}}</td>
+                      <td>{{user.school }}</td>
+                      <td>
+                          <button type="button" class="btn btn-outline-info btn-sm " >
+                            <i class="fa-solid fa-pen-to-square"></i>
+                          <a href="{% url 'updateUser' user.id %}" class="text-decoration-none">Edit</a>
+                          </button>
+                      </td>
+                      <td>
+                        <button type="button" 
+                          class="btn btn-outline-danger btn-sm" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#deleteUser{{user.id}}">
+                          <i class="fa-solid fa-trash-can"></i>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- Modal User -->
+                    <div class="modal fade" id="deleteUser{{user.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <i class="fa-solid fa-triangle-exclamation"></i> &nbsp
+                            <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure you want to delete user<strong> {{user.username}}</strong> permanently?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <form method="POST" action="{% url 'deleteUser' user.id %}">
+                              {% csrf_token %}
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                              <input class="btn btn-danger" value="Delete Permanently" type="submit">
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+            <!-- Pagination User -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+                {% if page_obj.has_previous %}
+                  <li class="page-item">
+                    <a class="page-link" href="?userpage={{ page_obj.previous_page_number }}">
+                      Previous
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="?userpage={{ page_obj.previous_page_number }}"
+                      >{{ page_obj.previous_page_number }}</a>
+                  </li>
+                {% endif %}
+      
+                <li class="page-item">
+                  <a class="page-link" href="?userpage={{ page_obj.number }}"
+                    >{{ page_obj.number }}</a>
+                </li>
+                
+                {% if page_obj.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="?userpage={{ page_obj.next_page_number }}"
+                      >{{ page_obj.next_page_number }}</a>
+                  </li>  
+                  <li class="page-item">
+                    <a class="page-link" href="?userpage={{ page_obj.next_page_number }}">  
+                      Next
+                    </a>
+                  </li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+    </div>
+    <div class="row">
+      <div class = "col">
+        <h5><i class="fa-solid fa-house"></i> &nbsp Registered School:
+          <button type="button" class="btn btn-warning btn-sm ">
+            <a href="#" class="text-decoration-none">{{school.count}}</a>
+            </button>
+        </h5>
+        <div class="table-responsive">
+          <table class="table table-hover">
+          <thead class="bg-success text-white">
+              <tr>
+              <th scope="col">SL No</th>
+              <th scope="col">School Name</th>
+              <th scope="col">Category</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              </tr>
+          </thead>
+          <tbody class="text-dark">
+              {% for school in page_obj_school %}
+              <tr>
+              <th scope="row">{{ page_obj_school.start_index|add:forloop.counter0 }}</th>
+              <td>{{school.school}}</td>
+              <td>{{school.category}}</td>
+              <td>
+                  <button type="button" class="btn btn-outline-info btn-sm " >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  <a href="{% url 'updateSchool' school.id %}" class="text-decoration-none">Edit</a>
+                  </button>
+              </td>
+              <td>
+                <button type="button" 
+                    class="btn btn-outline-danger btn-sm" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#deleteSchool{{school.id}}">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Delete
+                </button>
+              </td>
+            </tr>
+            <!-- Modal School -->
+            <div class="modal fade" id="deleteSchool{{school.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <i class="fa-solid fa-triangle-exclamation"></i> &nbsp
+                    <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      Are you sure you want to delete<strong> {{school.school}}</strong> permanently?
+                      All the info related to the school will be also deleted including the <strong>user</strong> associated.
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <form method="POST" action="{% url 'deleteSchool' school.id %}">
+                      {% csrf_token %}
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      <input class="btn btn-danger" value="Delete Permanently" type="submit">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            </tbody>
+          </table>
+      </div>
+      <!-- Pagination School -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          {% if page_obj_school.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?schoolpage={{ page_obj_school.previous_page_number }}">
+                Previous
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?schoolpage={{ page_obj_school.previous_page_number }}"
+                >{{ page_obj_school.previous_page_number }}</a>
+            </li>
+          {% endif %}
+
+          <li class="page-item">
+            <a class="page-link" href="?schoolpage={{ page_obj_school.number }}"
+              >{{ page_obj_school.number }}</a>
+          </li>
+          
+          {% if page_obj_school.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?schoolpage={{ page_obj_school.next_page_number }}"
+                >{{ page_obj_school.next_page_number }}</a>
+            </li>  
+            <li class="page-item">
+              <a class="page-link" href="?schoolpage={{ page_obj_school.next_page_number }}">  
+                Next
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+      </div>
+    </div>
+</div>
+
+
+{% endblock content %}

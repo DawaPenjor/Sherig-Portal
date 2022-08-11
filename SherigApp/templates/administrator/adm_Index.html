@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+{{block.super}}
+    <div class="container-fluid mt-3">
+        <div class="row text-center">
+            <h4>Administrator Page</h4>
+            <div class="col">
+                <a href="{% url 'admIndex' %}" class="text-decoration-none">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </button>
+                </a>
+                <a href="{% url 'registerSchool' %}" class="text-decoration-none">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-school"></i>
+                        Add School
+                    </button>
+                </a>
+                <a href="{% url 'registerUser' %}" class="text-decoration-none">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Register User
+                    </button>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        Add 13FYP
+                    </button>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-table-list"></i>
+                        Add APA
+                    </button>
+                </a>
+                <a href="#" class="text-decoration-none">
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </button>
+                </a>
+                <hr>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

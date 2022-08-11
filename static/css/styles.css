@@ -1,0 +1,7 @@
+body {
+    background: url('/static/images/bg.jpg');
+    font-family: 'Quicksand', sans-serif;
+}
+.navbar-brand{
+    font-weight: 700;
+}
