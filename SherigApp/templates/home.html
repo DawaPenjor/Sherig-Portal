@@ -1,0 +1,96 @@
+{% extends 'index.html'%}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid text-center" style="background-image: url('/static/images/dzong.jpg'); height: 20%; width: 100%; 
+background-position: center; background-repeat:no-repeat; background-size: cover;">
+    <div class="row align-items-center">
+        <div class="col" style="margin-top:23%; margin-bottom:5%">
+            <a href= "{% url 'info' %}" class="text-decoration-none">
+                <button type="button" class="btn btn-primary btn-l" >
+                    Information at Glance
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+    <h2 class="text-center"> Statistics of <script>document.write(new Date().getFullYear())</script> <hr></h2>
+    <div class="row">
+        <div class="col">
+            <div class="card border border-warning">
+                <div class="card-header">
+                <h5><i class="fa-solid fa-school"></i> Total School <span class="badge bg-warning">{{total_school}}</span></h5>
+                </div>
+                <div class="card-body">
+                <h6 class="card-title">Higher Secondary School: <span class="badge bg-dark">{{total_HSS}}</span></h6>
+                <h6 class="card-title">Middle Secondary School: <span class="badge bg-dark">{{total_MSS}}</span></h6>
+                <h6 class="card-title">Lower Secondary School: <span class="badge bg-dark">{{total_LSS}}</span></h6>
+                <h6 class="card-title">Primary School: <span class="badge bg-dark">{{total_PS}}</span></h6>
+                <h6 class="card-title">Muenseling Institute: <span class="badge bg-dark">{{muenseling}}</span></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border border-success">
+                <div class="card-header">
+                <h5><i class="fa-sharp fa-solid fa-person-chalkboard"></i> Total Staff <span class="badge bg-warning">{{total_staff}}</span></h5>
+                </div>
+                <div class="card-body">
+                <h6 class="card-title">Male Staff: <span class="badge bg-dark">{{total_male_staff}}</span>, &nbsp Female Staff: <span class="badge bg-dark">{{total_female_staff}}</span></h6>
+                <h6 class="card-title">Administration: <span class="badge bg-dark">{{total_adm}}</span></h6>
+                <h6 class="card-title">Teaching Staff: <span class="badge bg-dark">{{total_teacher}}</span></h6>
+                <h6 class="card-title">Supporting Staff: <span class="badge bg-dark">{{total_support_staff}}</span></h6>
+                <h6 class="card-title">Non-teaching Staff: <span class="badge bg-dark">{{total_non_teaching}}</span></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border border-primary">
+                <div class="card-header">
+                <h5><i class="fa-solid fa-users"></i> Total Students <span class="badge bg-warning">{{total_students}}</span></h5>
+                </div>
+                <div class="card-body">
+                <h6 class="card-title">Male: <span class="badge bg-dark">{{total_male_std}}</span></h6>
+                <h6 class="card-title">Female: <span class="badge bg-dark">{{total_female_std}}</span></h6>
+                <h6 class="card-title">Boarder Boys: <span class="badge bg-dark">{{total_boarder_boys}}</span>
+                    , &nbsp Boarder Girls: <span class="badge bg-dark">{{total_boarder_girls}}</span>
+                </h6>
+                <h6 class="card-title"> Dayscholar Boys: <span class="badge bg-dark">{{total_dayscholar_boys}}</span>
+                    , &nbsp Dayscholar Girls: <span class="badge bg-dark">{{total_dayscholar_girls}}</span>
+                </h6>
+                <h6 class="card-title">Total Students: <span class="badge bg-dark">{{total_students}}</span></h6>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="container ">
+    <center><h2> Feature <hr style="width:300px;"> </h2></center>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'images/school.png'%}" alt="School"/>
+            <h5>School Information</h5>
+            <p>You will get access to the updated information of the schools in Trashigang Dzongkhag.</p>
+        </div>
+        <div class="col">
+            <img src="{% static 'images/staff.png'%}" alt="Staff"/>
+            <h5>Staff Information</h5>
+            <p>Sensitive information about the staff are not given access to all. 
+                However, you will get the total statistic info of the school staff.
+            </p>
+        </div>
+        <div class="col">
+            <img src="{% static 'images/std.png'%}" alt="Student"/>
+            <h5>Students Information</h5>
+            <p>Students bio data are not recorded. Total number of students categorizing male, female, boarder
+                , and dayscholar are reflected.
+            </p>
+        </div>
+    </div>
+</div>
+<br>
+
+{% endblock content %}

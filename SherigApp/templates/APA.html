@@ -1,0 +1,41 @@
+{% extends 'index.html'%}
+{% load static %}
+
+{% block content %}
+<div class="container-sm mt-5 mb-5">
+    <div class="row">
+        <div class="col">
+            <h5>Annual Performance Agreement(APA) for <script>document.write(new Date().getFullYear())</script>
+                /Trashigang/Education Sector</h5>
+            <hr style="width:600px;">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">SL No</th>
+                    <th scope="col">File Name</th>
+                    <th scope="col">Date Uploaded</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="text-dark">
+                {% for f in file %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{f.APA_file | cut:"files/" }}</td>
+                    <td>{{f.date_uploaded| date:"D d M Y"}} </td>
+                    <td>
+                      <a href = "{{ f.APA_file.url }}" class="text-decoration-none">
+                        <button type="button" class="btn btn-info btn-sm " >
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </Table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

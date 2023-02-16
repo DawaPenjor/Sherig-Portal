@@ -1,0 +1,467 @@
+{% extends 'index.html'%}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-3 mb-3 p-4">
+    <h4>Summary of staff and students under Trashigang Dzongkhag</h4>
+    <hr>
+    <div class="row" >
+        <h5><strong>Stats of Students at various levels </strong></h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="bg-success text-white">
+                
+                <tr>
+                    <th></th>
+                    <th scope="col" colspan="2" class="text-center">PP</th>
+                    <th scope="col" colspan="2" class="text-center">I</th>
+                    <th scope="col" colspan="2" class="text-center">II</th>
+                    <th scope="col" colspan="2" class="text-center">III</th>
+                    <th scope="col" colspan="2" class="text-center">IV</th>
+                    <th scope="col" colspan="2" class="text-center">V</th>
+                    <th scope="col" colspan="2" class="text-center">VI</th>
+                    <th scope="col" colspan="2" class="text-center">VII</th>
+                    <th scope="col" colspan="2" class="text-center">VIII</th>
+                    <th scope="col" colspan="2" class="text-center">IX</th>
+                    <th scope="col" colspan="2" class="text-center">X</th>
+                    <th scope="col" colspan="2" class="text-center">XI</th>
+                    <th scope="col" colspan="2" class="text-center">XII</th>
+                    <th scope="col" colspan="2" class="text-center">Total</th>
+                </tr>
+                    <tr>
+                        <th></th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <th>Total Students</th>
+                            <th >{{total_male_std_pp}}</th>
+                            <th >{{total_female_std_pp}}</th>
+                            <th >{{total_male_std_I}}</th>
+                            <th >{{total_female_std_I}}</th>
+                            <th >{{total_male_std_II}}</th>
+                            <th >{{total_female_std_II}}</th>
+                            <th >{{total_male_std_III}}</th>
+                            <th >{{total_female_std_III}}</th>
+                            <th >{{total_male_std_IV}}</th>
+                            <th >{{total_female_std_IV}}</th>
+                            <th >{{total_male_std_V}}</th>
+                            <th >{{total_female_std_V}}</th>
+                            <th >{{total_male_std_VI}}</th>
+                            <th >{{total_female_std_VI}}</th>
+                            <th >{{total_male_std_VII}}</th>
+                            <th >{{total_female_std_VII}}</th>
+                            <th >{{total_male_std_VIII}}</th>
+                            <th >{{total_female_std_VIII}}</th>
+                            <th >{{total_male_std_IX}}</th>
+                            <th >{{total_female_std_IX}}</th>
+                            <th >{{total_male_std_X}}</th>
+                            <th >{{total_female_std_X}}</th>
+                            <th >{{total_male_std_XI}}</th>
+                            <th >{{total_female_std_XI}}</th>
+                            <th >{{total_male_std_XII}}</th>
+                            <th >{{total_female_std_XII}}</th>
+                            
+                            <th >{{total_male_std}}</th>
+                            <th >{{total_female_std}}</th>
+                            
+                        </tr>
+                        <tr class="table-secondary"> 
+                            <th>Grand Total</th>
+                            <th colspan="2" class="text-center">{{total_std_pp}}</th>
+                            <th colspan="2" class="text-center">{{total_std_I}}</th>
+                            <th colspan="2" class="text-center">{{total_std_II}}</th>
+                            <th colspan="2" class="text-center">{{total_std_III}}</th>
+                            <th colspan="2" class="text-center">{{total_std_IV}}</th>
+                            <th colspan="2" class="text-center">{{total_std_V}}</th>
+                            <th colspan="2" class="text-center">{{total_std_VI}}</th>
+                            <th colspan="2" class="text-center">{{total_std_VII}}</th>
+                            <th colspan="2" class="text-center">{{total_std_VIII}}</th>
+                            <th colspan="2" class="text-center">{{total_std_IX}}</th>
+                            <th colspan="2" class="text-center">{{total_std_X}}</th>
+                            <th colspan="2" class="text-center">{{total_std_XI}}</th>
+                            <th colspan="2" class="text-center">{{total_std_XII}}</th>
+                            
+                            <th colspan="2" class="text-center">{{total_std}}</th>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row" >
+        <h5><strong>Stats of Boarder and Dayscholar students</strong></h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="bg-warning">
+                
+                <tr >
+                    <th> </th>
+                    <th scope="col" colspan="3" class="text-center">HSS</th>
+                    <th scope="col" colspan="3" class="text-center">MSS</th>
+                    <th scope="col" colspan="3" class="text-center">LSS</th>
+                    <th scope="col" colspan="3" class="text-center">PS</th>
+                    <th scope="col" colspan="3" class="text-center">Muenseling</th>
+                    <th scope="col" colspan="3" class="text-center">Grand Total</th>
+                </tr>
+                    <tr>
+                        <th></th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Total</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Total</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Total</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Total</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Total</th>
+                        <th >Boys</th>
+                        <th >Girls</th>
+                        <th >Total</th>                        
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr >
+                            <th>Boarder</th>
+                            <th >{{total_male_boarder_std_hss}}</th>
+                            <th >{{total_female_boarder_std_hss}}</th>
+                            <th >{{total_boarder_std_hss}}</th>
+                            <th >{{total_male_boarder_std_mss}}</th>
+                            <th >{{total_female_boarder_std_mss}}</th>
+                            <th >{{total_boarder_std_mss}}</th>
+                            <th >{{total_male_boarder_std_lss}}</th>
+                            <th >{{total_female_boarder_std_lss}}</th>
+                            <th >{{total_boarder_std_lss}}</th>
+                            <th >{{total_male_boarder_std_ps}}</th>
+                            <th >{{total_female_boarder_std_ps}}</th>
+                            <th >{{total_boarder_std_ps}}</th>
+                            <th >{{total_male_boarder_std_msi}}</th>
+                            <th >{{total_female_boarder_std_msi}}</th>
+                            <th >{{total_boarder_std_msi}}</th>
+                            <th >{{total_male_boarder_std}}</th>
+                            <th >{{total_female_boarder_std}}</th>
+                            <th >{{total_boarder_std}}</th>
+                            
+                        </tr>
+                        <tr> 
+                            <th>Dayscholar</th>
+                            <th>{{total_male_dayscholar_std_hss}}</th>
+                            <th>{{total_female_dayscholar_std_hss}}</th>
+                            <th>{{total_dayscholar_std_hss}}</th>
+                            <th>{{total_male_dayscholar_std_mss}}</th>
+                            <th>{{total_female_dayscholar_std_mss}}</th>
+                            <th>{{total_dayscholar_std_mss}}</th>
+                            <th>{{total_male_dayscholar_std_lss}}</th>
+                            <th>{{total_female_dayscholar_std_lss}}</th>
+                            <th>{{total_dayscholar_std_lss}}</th>
+                            <th>{{total_male_dayscholar_std_ps}}</th>
+                            <th>{{total_female_dayscholar_std_ps}}</th>
+                            <th>{{total_dayscholar_std_ps}}</th>
+                            <th>{{total_male_dayscholar_std_msi}}</th>
+                            <th>{{total_female_dayscholar_std_msi}}</th>
+                            <th>{{total_dayscholar_std_msi}}</th>
+                            <th>{{total_male_dayscholar_std}}</th>
+                            <th>{{total_female_dayscholar_std}}</th>
+                            <th>{{total_dayscholar_std}}</th>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row" >
+        <h5><strong>Stats of staff at school</strong></h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="bg-info">
+                
+                <tr >
+                    <th> </th>
+                    <th scope="col" colspan="3" class="text-center">HSS</th>
+                    <th scope="col" colspan="3" class="text-center">MSS</th>
+                    <th scope="col" colspan="3" class="text-center">LSS</th>
+                    <th scope="col" colspan="3" class="text-center">PS</th>
+                    <th scope="col" colspan="3" class="text-center">Muenseling</th>
+                    <th scope="col" colspan="3" class="text-center">ECR</th>
+                    <th scope="col" colspan="3" class="text-center">Grand Total</th>
+                </tr>
+                    <tr>
+                        <th></th>
+                        <th >Male</th>
+                        <th >Female</th>
+                        <th >Total</th>
+                        <th >Male</th>
+                        <th >Female</th>
+                        <th >Total</th>
+                        <th >Male</th>
+                        <th >Female</th>
+                        <th >Total</th>
+                        <th >Male</th>
+                        <th >Female</th>
+                        <th >Total</th>
+                        <th >Male</th>
+                        <th >Female</th>
+                        <th >Total</th>
+                        <th >Male</th>
+                        <th >Female</th>
+                        <th >Total</th>
+                        <th >Male</th>
+                        <th >Female</th>
+                        <th >Total</th>
+                                            
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr >
+                            <th>Teacher</th>
+                            <th >{{total_male_teacher_hss}}</th>
+                            <th >{{total_female_teacher_hss}}</th>
+                            <th >{{total_teacher_hss}}</th>
+                            <th >{{total_male_teacher_mss}}</th>
+                            <th >{{total_female_teacher_mss}}</th>
+                            <th >{{total_teacher_mss}}</th> 
+                            <th >{{total_male_teacher_lss}}</th>
+                            <th >{{total_female_teacher_lss}}</th>
+                            <th >{{total_teacher_lss}}</th>  
+                            <th >{{total_male_teacher_ps}}</th>
+                            <th >{{total_female_teacher_ps}}</th>
+                            <th >{{total_teacher_ps}}</th> 
+                            <th >{{total_male_teacher_msi}}</th>
+                            <th >{{total_female_teacher_msi}}</th>
+                            <th >{{total_teacher_msi}}</th>
+                            <th >NA</th>
+                            <th >NA</th>
+                            <th >NA</th>
+                            <th >{{total_male_teacher}}</th>
+                            <th >{{total_female_teacher}}</th>
+                            <th >{{total_teacher}}</th>
+                        </tr>
+                        <tr> 
+                            <th>Support Staff</th>
+                            <th >{{total_male_support_hss}}</th>
+                            <th >{{total_female_support_hss}}</th>
+                            <th >{{total_support_hss}}</th>
+                            <th >{{total_male_support_mss}}</th>
+                            <th >{{total_female_support_mss}}</th>
+                            <th >{{total_support_mss}}</th>
+                            <th >{{total_male_support_lss}}</th>
+                            <th >{{total_female_support_lss}}</th>
+                            <th >{{total_support_lss}}</th>
+                            <th >{{total_male_support_ps}}</th>
+                            <th >{{total_female_support_ps}}</th>
+                            <th >{{total_support_ps}}</th>
+                            <th >{{total_male_support_msi}}</th>
+                            <th >{{total_female_support_msi}}</th>
+                            <th >{{total_support_msi}}</th>
+                            <th >NA</th>
+                            <th >NA</th>
+                            <th >NA</th>
+                            <th >{{total_male_support}}</th>
+                            <th >{{total_female_support}}</th>
+                            <th >{{total_support}}</th>
+                            
+                        </tr>
+                        <tr> 
+                            <th>Non-teaching staff</th>
+                            <th >{{total_male_non_teaching_hss}}</th>
+                            <th >{{total_female_non_teaching_hss}}</th>
+                            <th >{{total_non_teaching_hss}}</th>  
+                            <th >{{total_male_non_teaching_mss}}</th>
+                            <th >{{total_female_non_teaching_mss}}</th>
+                            <th >{{total_non_teaching_mss}}</th>
+                            <th >{{total_male_non_teaching_lss}}</th>
+                            <th >{{total_female_non_teaching_lss}}</th>
+                            <th >{{total_non_teaching_lss}}</th>
+                            <th >{{total_male_non_teaching_ps}}</th>
+                            <th >{{total_female_non_teaching_ps}}</th>
+                            <th >{{total_non_teaching_ps}}</th>
+                            <th >{{total_male_non_teaching_msi}}</th>
+                            <th >{{total_female_non_teaching_msi}}</th>
+                            <th >{{total_non_teaching_msi}}</th>
+                            <th >NA</th>
+                            <th >NA</th>
+                            <th >NA</th>
+                            <th >{{total_male_non_teaching}}</th>
+                            <th >{{total_female_non_teaching}}</th>
+                            <th >{{total_non_teaching}}</th>
+                            
+                        </tr>
+                        <tr> 
+                            <th>ECCDF</th>
+                           
+                        </tr>
+                        <tr> 
+                            <th>NFEI</th>
+                            
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row" >
+        <h5><strong>Stats of students at each school</strong></h5>
+        <div class="col col-lg-6">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="bg-secondary text-white">
+                    <tr >
+                        <th scope="col" colspan="5" class="text-center">HSS</th>
+                    </tr>
+                        <tr>
+                            <th>School</th>
+                            <th >Boys</th>
+                            <th >Girls</th>
+                            <th >Total</th>                           
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr>
+                               {% for sch  in school_name %} 
+                                    {% if sch.category == "HSS" %}
+                                    <tr>
+                                    <th>{{sch  }}</th>
+                                    <th>{{total_male}}</th>
+                                    <th>{{total_female}}</th>
+                                    <th>{{total_students}}</th>
+                                    </tr>
+                                    {% endif %}
+                               {% endfor %}                              
+                            </tr>                                                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col col-lg-6">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="bg-secondary text-white">
+                    <tr >
+                        <th scope="col" colspan="5" class="text-center">MSS</th>
+                    </tr>
+                        <tr>
+                            <th>School</th>
+                            <th >Boys</th>
+                            <th >Girls</th>
+                            <th >Total</th>                           
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr>
+                                {% for sch  in school_name %} 
+                                {% if sch.category == "MSS" or sch.category == "Muenseling"  %}
+                                    <tr>
+                                        <th>{{sch}}</th>
+                                        <th>{{total_male}}</th>
+                                        <th>{{total_female}}</th>
+                                        <th>{{total_students}}</th>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>                                                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col col-lg-6">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="bg-secondary text-white">
+                    <tr >
+                        <th scope="col" colspan="5" class="text-center">LSS</th>
+                    </tr>
+                        <tr>
+                            <th>School</th>
+                            <th >Boys</th>
+                            <th >Girls</th>
+                            <th >Total</th>                           
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr>
+                                {% for sch  in school_name %} 
+                                {% if sch.category == "LSS" %}
+                                    <tr>
+                                    <th>{{sch}}</th>
+                                    <th>{{total_male}}</th>
+                                    <th>{{total_female}}</th>
+                                    <th>{{total_students}}</th>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>                                                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col col-lg-6">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="bg-secondary text-white">
+                    <tr >
+                        <th scope="col" colspan="5" class="text-center">PS</th>
+                    </tr>
+                        <tr>
+                            <th>School</th>
+                            <th >Boys</th>
+                            <th >Girls</th>
+                            <th >Total</th>                           
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr>
+                                {% for sch  in school_name %} 
+                                    {% if sch.category == "PS" %}
+                                    <tr>
+                                        <th>{{sch}}</th>
+                                        <th>{{total_male}}</th>
+                                        <th>{{total_female}}</th>
+                                        <th>{{total_students}}</th>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>                                                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}

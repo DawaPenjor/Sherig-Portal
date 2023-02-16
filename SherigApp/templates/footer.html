@@ -1,5 +1,33 @@
-<nav class="navbar sticky-bottom navbar-dark bg-dark">
-    <div class="container-fluid text-white">
-        <p class="fw-light"><i>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Trashigang Dzongkhag/All Rights Reserved</i></p>
+<div class="container-fluid bg-dark text-white p-3">
+    <h5><strong>Quick Links</strong></h5>
+    <hr style="width:250px;">
+    <div class="row" style="width:100%;">
+        <div class="col">
+            <a href="{% url 'info' %}" class="text-decoration-none"><p><strong>Info At Glance</strong></p></a>
+            <a href="{% url 'principalContact' %}" class="text-decoration-none"><p><strong>Principal's Contact</strong></p></a>
+            <a href="http://www.trashigang.gov.bt/staffs-of-the-dzongkhag"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Dzongkhag Contact</strong></p></a>
+        </div>
+        <div class="col">
+            <a href="http://www.trashigang.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Trashigang Website</strong></p></a>
+            <a href="http://www.education.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Ministry of Education</strong></p></a>
+            <a href="https://rec.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>DCPD</strong></p></a>
+        </div>
+        <div class="col">
+            <a href="https://zest.rcsc.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Zhiyog System</strong></p></a>
+            <a href="https://max.rcsc.gov.bt/Login"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>MAX online</strong></p></a>
+            <a href="https://www.citizenservices.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Citizen service</strong></p></a>
+        </div>
+        <div class="col">
+            <a href="https://aims.bhutanaudit.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Audit Clearence</strong></p></a>
+            <a href="http://scs.rbp.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Security Clearence</strong></p></a>
+            <a href="https://www.gov.bt/"  target="_blank" rel="noopener noreferrer" class="text-decoration-none"><p><strong>Bhutan Portal</strong></p></a>
+        </div>
     </div>
-</nav>
+</div>
+<footer style="position:relative;">
+    <div class="text-center p-3 bg-dark text-secondary">
+        Copyright &copy; 
+                <script>document.write(new Date().getFullYear())</script> 
+                Trashigang Dzongkhag/All Rights Reserved
+    </div>
+</footer>

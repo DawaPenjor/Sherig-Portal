@@ -1,7 +1,7 @@
 {%load static%}
 <nav class="navbar bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand h3" href="#">
+    <a class="navbar-brand" href="#">
       <img src="{% static 'images/sherig.png' %}" alt="" width="50" height="60" class="d-inline-block align-text-center">
       Sherig Information Dashboard | Trashigang
     </a>
@@ -15,42 +15,47 @@
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px; font-size: 16px;">
           <li class="nav-item">
-            <a class="nav-link px-3" aria-current="page" href="{% url 'index' %}">Home</a>
+            <a class="nav-link px-3" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
           {% if user.is_authenticated %}
             {% if user.is_superuser %}
               <li class="nav-item">
-                  <a class="nav-link px-3" href="{% url 'admIndex' %}">Admin</a>
+                  <a class="nav-link px-3" href="{% url 'admIndex' %}">Account</a>
+              </li>
+            {% endif %}
+            {% if user.is_school %}
+              <li class="nav-item">
+                  <a class="nav-link px-3" href="{% url 'schoolIndex' %}">Account</a>
               </li>
             {% endif %}            
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link px-3" href="#">About Us</a>
+            <a class="nav-link px-3" href=" {% url 'about' %}">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link px-3 dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Schools
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="#">Higher Secondary School</a></li>
-              <li><a class="dropdown-item" href="#">Middle Secondary School</a></li>
-              <li><a class="dropdown-item" href="#">Lower Secondary School</a></li>
-              <li><a class="dropdown-item" href="#">Primary School</a></li>
-              <li><a class="dropdown-item" href="#">Extended Classroom</a></li>
-              <li><a class="dropdown-item" href="#">Muenseling Institute</a></li>
+              <li><a class="dropdown-item" href="{% url 'hss_home' %}">Higher Secondary School</a></li>
+              <li><a class="dropdown-item" href="{% url 'mss_home' %}">Middle Secondary School</a></li>
+              <li><a class="dropdown-item" href="{% url 'lss_home' %}">Lower Secondary School</a></li>
+              <li><a class="dropdown-item" href="{% url 'ps_home' %}">Primary School</a></li>
+              <li><a class="dropdown-item" href="{% url 'msi_home' %}">Muenseling Institute</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-3" href="#">13 FYP</a>
+            <a class="nav-link px-3" href="{% url 'FYP' %}" title="Five Year Plan">FYP</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-3" href="#">APA</a>
+            <a class="nav-link px-3" href="{% url 'APA' %}" title="Annual Performance Agreement">APA</a>
           </li>
           <li class="nav-item">
             <a class="nav-link px-3" href="{% url 'contactUs' %}">Contact Us</a>
           </li>
         </ul>
         {% if user.is_authenticated %}
+        {% comment %}<img src="{{pro.pro_pic.url}}" class="rounded" style="height:30px; width=30px;"/>{% endcomment %}
           <a style="color:#F2E3D5;">Hi {{ user.username }}!</a> &nbsp
           <button class="btn btn-outline-light btn-sm" type="submit">
             <a href="{% url 'logoutUser' %} " class="text-decoration-none">Logout</a>

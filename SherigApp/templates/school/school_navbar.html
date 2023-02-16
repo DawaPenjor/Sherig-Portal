@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+{{block.super}}
+    <div class="container-fluid mt-3">
+        <div class="row ">
+            <center><h4>Welcome to {{user.school}}</h4></center>
+            <div class="col">
+                <ul class="nav nav-tabs justify-content-center">
+                    <li class="nav-item">
+                      <a class="nav-link text-decoration-none" href="{% url 'schoolIndex' %}"><i class="fa-solid fa-house"></i>&nbsp Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user-plus"></i>&nbsp Staff</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'staffList' %}">Staff List</a></li>
+                        <li><a class="dropdown-item" href=" {% url 'staffLeaveList' %}">Staff on Leave</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-users"></i>&nbsp Student</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'studentStats' %}">Student Stats</a></li>
+                          <li><a class="dropdown-item" href="#">Result</a></li>
+                          <li><a class="dropdown-item" href="{% url 'topperList' %}">Topper</a></li>
+                          <li><a class="dropdown-item" href="{% url 'tozayList' %}">Tozay</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-school"></i>&nbsp School</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'capActivityList' %}">Capital Activities</a></li>
+                          <li><a class="dropdown-item" href="{% url 'schoolInsfrastructureList' %}">Infrastructure</a></li>
+                          <li><a class="dropdown-item" href="#">ECR</a></li>
+                          <li><a class="dropdown-item" href="#">ECCD</a></li>
+                          <li><a class="dropdown-item" href="#">NFE Info</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-decoration-none" href="{% url 'account' user.id %}"><i class="fa-solid fa-user"></i>&nbsp Profile</a>
+                      </li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

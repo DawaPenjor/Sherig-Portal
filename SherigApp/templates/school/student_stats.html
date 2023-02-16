@@ -1,0 +1,127 @@
+{% extends 'school/school_navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{block.super}}
+<div class="container-fluid mb-5 mt-2">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %} 
+      <div class="row">
+          <div class="col">
+              <h5><i class="fa-solid fa-users"></i> &nbsp Students Stats
+                <a href=" {% url 'addStudents' %}"><button class="btn btn-primary btn-sm">Add student Stats</button></a>
+              </h5>
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                  <thead class="bg-success text-white">
+                      <tr>
+                        <th scope="col" colspan="5"></th>
+                        <th scope="col" colspan="3" class="text-center">Total Students</th>
+                        <th scope="col" colspan="3" class="text-center">Dayscholar Students</th>
+                        <th scope="col" colspan="3" class="text-center">Boarder Students</th> 
+                        <th scope="col" colspan="2"></th>
+                                            
+                      </tr>
+                      <tr>
+                        <th scope="col">SL No</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Section</th>
+                        <th scope="col">Stream</th>
+                        <th scope="col">School</th>
+                        <th scope="col">Girls</th>
+                        <th scope="col" >Boys</th>
+                        <th scope="col" >Total</th> 
+                        <th scope="col">Girls</th>
+                        <th scope="col" >Boys</th>
+                        <th scope="col" >Total</th>
+                        <th scope="col">Girls</th>
+                        <th scope="col" >Boys</th>
+                        <th scope="col" >Total</th>
+                        <th scope="col" colspan="2" class="text-center">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-dark">
+                    {% for std in student %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter}}</th>
+                        <td>{{std.standard}}</td>
+                        <td>{{std.section}}</td>
+                        <td>{{std.stream}}</td>
+                        <td>{{std.school }}</td>
+                        <td>{{std.total_girls }}</td>
+                        <td>{{std.total_boys }}</td>
+                        <td class="fw-bolder"> {{std.total_students }}</td>
+
+                        <td>{{std.total_dayscholar_girls }}</td>
+                        <td>{{std.total_dayscholar_boys }}</td>
+                        <td class="fw-bolder">{{std.total_dayscholar_students }}</td>
+
+                        <td>{{std.total_boarder_girls }}</td>
+                        <td>{{std.total_boarder_boys }}</td>
+                        <td class="fw-bolder">{{std.total_boarder_students }}</td>
+                        <td>
+                            <a href="{% url 'updateStudent' std.id %} " class="text-decoration-none">
+                                <button type="button" class="btn btn-outline-info btn-sm " >
+                                  <i class="fa-solid fa-pen-to-square"></i>
+                                    Edit
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <button type="button" 
+                                class="btn btn-outline-danger btn-sm" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#deleteStaff{{std.id}}">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Modal Staff -->
+                    <div class="modal fade" id="deleteStaff{{std.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <i class="fa-solid fa-triangle-exclamation"></i> &nbsp
+                              <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Are you sure you want to delete class <strong>{{std.standard}}{{std.section}} stats</strong> permanently?</p>
+                            </div>
+                            <div class="modal-footer">
+                              <form method="POST" action="{% url 'deleteStudent' std.id %}">
+                                {% csrf_token %}
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <input class="btn btn-danger" value="Delete Permanently" type="submit">
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="bg-secondary text-white">
+                      <th colspan="5">Grand total</th>
+                      <th>{{total_female_std}}</th>
+                      <th>{{total_male_std}}</th>
+                      <th>{{total_students}}</th>
+                      <th>{{total_dayscholar_girls}}</th>
+                      <th>{{total_dayscholar_boys}}</th>
+                      <th>{{total_dayscholar_students}}</th>
+                      <th>{{total_boarder_girls}}</th>
+                      <th>{{total_boarder_boys}}</th>
+                      <th>{{total_boarder_students}}</th>
+                      <th colspan="2"></th>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+                      
+{% endblock %}

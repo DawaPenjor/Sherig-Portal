@@ -1,0 +1,53 @@
+{% extends 'school/school_navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{block.super}}
+<div class="parent container d-flex justify-content-center align-items-center h-100 mb-3 mt-3">
+    <div class="child">
+        <div class="card" style="width: 40rem;">
+            <h5 class="card-header bg-info text-white text-center"> &nbsp Update Staff on Leave</h5>
+            <div class="card-body">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %} 
+                        <div class="row">
+                        {{form.name|as_crispy_field}}
+                        </div>
+                        <br>
+                        <div class="row">
+                        {{form.designation|as_crispy_field}}
+                        </div>
+                        <br>
+                        <div class="row">
+                        {{form.type_of_leave|as_crispy_field}}
+                        </div>
+                        <br>
+                        <div class="row">
+                            {{form.office_order|as_crispy_field}}
+                        </div>
+                        <br>
+                        <div class="row">
+                            {{form.Start_date|as_crispy_field}}
+                        </div>
+                        <br>
+                        <div class="row">
+                            {{form.End_date|as_crispy_field}}
+                        </div>
+                        <br>
+                        <div class="row">
+                            {{form.remark|as_crispy_field}}
+                        </div>
+                        <br>
+                    <button type="submit" class="btn btn-success">Update</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

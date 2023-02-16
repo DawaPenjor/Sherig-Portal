@@ -1,0 +1,91 @@
+{% extends 'school/school_navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{block.super}}
+<div class="container-fluid mb-5 mt-2">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %} 
+    <h5><i class="fa-solid fa-users"></i> &nbsp Staff on Leave:
+        <span class="badge bg-warning">{{total_staff_on_leave}}</span>
+        <a href=" {% url 'addStaffOnLeave' %}"><button class="btn btn-primary btn-sm">Add Staff on Leave</button></a>
+    </h5>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="bg-success text-white">
+                <tr>
+                <th scope="col">SL No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Designation</th>
+                <th scope="col">School</th>
+                <th scope="col">Leave Type</th>
+                <th scope="col">Office Order</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Remark</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="text-dark">
+                {% for staffs in staff_on_leave %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{staffs.name}}</td>
+                    <td>{{staffs.designation}}</td>
+                    <td>{{staffs.School }}</td>
+                    <td>{{staffs.type_of_leave }}</td>
+                    <td>{{staffs.office_order }}</td>
+                    <td>{{staffs.Start_date }}</td>
+                    <td>{{staffs.End_date }}</td>
+                    <td>{{staffs.remark }}</td>
+                    <td>
+                        <a href="{% url 'updateStaffLeave' staffs.id %}" class="text-decoration-none">
+                            <button type="button" class="btn btn-outline-info btn-sm " >
+                            <i class="fa-solid fa-pen-to-square"></i>
+                                Edit
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <button type="button" 
+                            class="btn btn-outline-success btn-sm" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#deleteStaff{{staffs.id}}">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            Reported
+                        </button>
+                    </td>
+                </tr>
+                <!-- Modal Staff -->
+                <div class="modal fade" id="deleteStaff{{staffs.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <i class="fa-solid fa-triangle-exclamation"></i> &nbsp
+                                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure <strong> {{staffs.name}}({{staffs.designation}})</strong> has reported back?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <form method="POST" action="{% url 'deleteStaffLeave' staffs.id %}">
+                                    {% csrf_token %}
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <input class="btn btn-success" value="Reported" type="submit">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>              
+{% endblock %}

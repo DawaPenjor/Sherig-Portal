@@ -11,7 +11,7 @@
             </h5>
             </div>
             <div class="container-fluid">
-                <form method='POST'>
+                <form method='POST' autocomplete="off">
                     {% csrf_token %}
                     <br>
                     {% for message in messages %}
@@ -20,7 +20,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     {% endfor %}  
-                    <p>This login is only for an admin and school administrator. 
+                    <p>This login is only for Dzongkhang and School admins. 
                         Enter email address and the password provided by the super admin.
                     </p>
                     <div class="input-group mb-3">
@@ -29,9 +29,12 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text fa fa-key"></span>
-                        <input type="password" class="form-control" name="password" placeholder="password...." aria-describedby="basic-addon1">
+                        <input type="password" class="form-control" name="password" id="myInput" placeholder="password...." aria-describedby="basic-addon1">
                     </div>
-                    <p><a href="#"> forgot password? </a></p>
+                    <div>
+                        <p><input type="checkbox" onclick="myFunction()">&nbsp Show Password</p>
+                    </div>
+                    <p><a href="{% url 'reset_password' %}" class="text-decoration-none"> forgot password? </a></p>
                     <hr style="width:300px;">
                     <button type="submit" class="btn btn-primary ">Login</button>                    
                 </form>  
@@ -41,4 +44,15 @@
     </div>
     <br><br><br>
 </div> 
+<script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
 {% endblock content %}
+

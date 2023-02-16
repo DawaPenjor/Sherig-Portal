@@ -1,0 +1,90 @@
+{% extends 'school/school_navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{block.super}}
+
+<div class="container mt-3 mb-3">
+    <div class="row">
+        <h5>Staff stats: <span class="badge bg-warning">{{total_staff}}</span></h5>
+        <table class="table table-striped table-hover">
+            <thead class="bg-success text-white">
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Male</th>
+                <th scope="col">Female</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Administrator</th>
+                <td>{{total_male_adm}}</td>
+                <td>{{total_female_adm}}</td>
+                <td>{{total_adm}}</td>
+              </tr>
+              <tr>
+                <th>Teaching Staff</th>
+                <td>{{total_male_teacher}}</td>
+                <td>{{total_female_teacher}}</td>
+                <td>{{total_teacher}}</td>
+              </tr>
+              <tr>
+                <th>Supporting Staff</th>
+                <td>{{total_male_support}}</td>
+                <td>{{total_female_support}}</td>
+                <td>{{total_support}}</td>
+              </tr>
+              <tr>
+                <th>Non-teaching Staff</th>
+                <td>{{total_male_non_teaching}}</td>
+                <td>{{total_female_non_teaching}}</td>
+                <td>{{total_non_teaching}}</td>
+              </tr>
+            </tbody>
+            <tfoot class="bg-secondary text-white text-strong">
+              <th>Grand Total</th>
+              <th>{{total_male_staff}}</th>
+              <th>{{total_female_staff}}</th>
+              <th>{{total_staff}}</th>
+            </tfoot>
+          </table>
+    </div>
+    <br>
+    <div class="row">
+        <h5> Student Stats: <span class="badge bg-warning">{{total_students}}</span></h5>
+        <table class="table table-striped table-hover">
+            <thead class="bg-success text-white">
+              <tr>
+                <th scope="col">Sl No</th>
+                <th scope="col">Class</th>
+                <th scope="col">Section</th>
+                <th scope="col">Stream</th>
+                <th scope="col">Male</th>
+                <th scope="col">Female</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for std in total_standard %}
+              <tr> 
+                <th>{{forloop.counter}}</th>               
+                <th>{{std.standard}}</th>
+                <td>{{std.section}}</td>
+                <td>{{std.stream}}</td>
+                <td>{{std.total_boys}}</td>
+                <td>{{std.total_girls}}</td>
+                <td>{{std.total_students}}</td>                
+              </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot class="bg-secondary text-white text-strong">
+              <th colspan="4">Grand Total</th>
+              <th>{{total_male_std}}</th>
+              <th>{{total_female_std}}</th>
+              <th>{{total_students}}</th>
+            </tfoot>
+          </table>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,103 @@
+{% extends 'school/school_navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{block.super}}
+<div class="container-fluid mb-5 mt-2">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    <div class="row mt-4 mb-3">
+        <center>
+          <form method="GET">
+            <div class="col">
+              {{filterTopper.form}}
+              <button type="submit" class="btn btn-success btn-sm">Search</button>
+            </div>
+          </form>
+        </center>
+      </div> 
+      <div class="row">
+          <div class="col">
+              <h5><i class="fa-solid fa-users"></i> &nbsp Topper List
+                <a href=" {% url 'addTopper' %}"><button class="btn btn-primary btn-sm">Add Topper</button></a>
+              </h5>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="bg-success text-white">
+                      <tr>
+                      <th scope="col">SL No</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Gender</th>
+                      <th scope="col">Class</th>
+                      <th scope="col">School</th>
+                      <th scope="col">Stream</th>
+                      <th scope="col">Subject</th>
+                      <th scope="col">Percentage</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-dark">
+                    {% for top in topper %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{top.name}}</td>
+                        <td>{{top.gender}}</td>
+                        <td>{{top.standard }}</td>
+                        <td>{{top.school }}</td>
+                        <td>{{top.stream }}</td>
+                        <td>{{top.subject }}</td>
+                        <td>{{top.percentage }}%</td>
+                        <td>
+                            <a href="{% url 'updateTopper' top.id %}" class="text-decoration-none">
+                                <button type="button" class="btn btn-outline-info btn-sm " >
+                                  <i class="fa-solid fa-pen-to-square"></i>
+                                    Edit
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <button type="button" 
+                                class="btn btn-outline-danger btn-sm" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#deleteStaff{{top.id}}">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Modal Staff -->
+                    <div class="modal fade" id="deleteStaff{{top.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <i class="fa-solid fa-triangle-exclamation"></i> &nbsp
+                              <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Are you sure you want to delete topper <strong>{{top.name}} of class {{top.standard}}</strong> permanently?</p>
+                            </div>
+                            <div class="modal-footer">
+                              <form method="POST" action="{% url 'deleteTopper' top.id %}">
+                                {% csrf_token %}
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <input class="btn btn-danger" value="Delete Permanently" type="submit">
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+                      
+{% endblock %}

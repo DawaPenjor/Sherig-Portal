@@ -1,0 +1,70 @@
+{% extends 'index.html'%}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4 mb-4">
+    <center><h4>Statistics of Muenseling Institute <script>document.write(new Date().getFullYear())</script></h4>
+    <hr style="width:350px;"></center>
+        <div class="row">
+            <div class="col-lg-4">           
+                <h5><strong>Students Stats</strong></h5>
+                <hr> 
+                <h6 class="card-title">Total Boys: <span class="badge bg-dark">{{total_male_std}}</span></h6>
+                <h6 class="card-title">Total Girls: <span class="badge bg-dark">{{total_female_std}}</span></h6>
+                <h6 class="card-title">Total Student: <span class="badge bg-warning">{{total_students}}</span></h6>
+                <br>
+                <h6 class="card-title">Total Boarder Boys: <strong>{{total_boarder_boys}}</strong></h6>
+                <h6 class="card-title">Total Boarder Girls: <strong>{{total_boarder_girls}}</strong></h6>
+                <h6 class="card-title">Total Boarder Student: <strong>{{total_boarder_students}}</strong></h6>
+                <br>
+                <h6 class="card-title">Total Dayscholar Boys:<strong> {{total_dayscholar_boys}}</strong></h6>
+                <h6 class="card-title">Total Dayscholar Girls: <strong>{{total_dayscholar_girls}}</strong></h6>
+                <h6 class="card-title">Total Dayscholar Student: <strong>{{total_dayscholar_students}}</strong></h6>
+                <br>
+            </div>
+            <div class="col-lg-4">                                   
+                <h5><strong>Staff Stats</strong></h5> 
+                <hr>                                       
+                <h6 class="card-title">Staff(Male): <span class="badge bg-dark">{{total_male_staff}}</strong></span></h5>
+                <h6 class="card-title">Staff(Female): <span class="badge bg-dark">{{total_female_staff}}</strong></span></h5>
+                <h6 class="card-title">Total Staff: <span class="badge bg-warning">{{total_staff}}</strong></span></h5>
+                <br>
+                <h6 class="card-title">Adminstration(Male): <strong>{{total_male_adm}}</strong></h6>
+                <h6 class="card-title">Adminstration(Female): <strong>{{total_female_adm}}</strong></h6>
+                <h6 class="card-title">Total Adminstration: <strong>{{total_adm}}</strong></h6>
+                <br>
+                <h6 class="card-title">Teacher(Male): <strong>{{total_male_teacher}}</strong></h6>
+                <h6 class="card-title">Teacher(Female): <strong>{{total_female_teacher}}</strong></h6>
+                <h6 class="card-title">Total Teacher: <strong>{{total_teacher}}</strong></h6>
+                <br>
+                <h6 class="card-title">Support Staff(Male): <strong>{{total_male_support}}</strong></h6>
+                <h6 class="card-title">Support Staff(Female): <strong>{{total_female_support}}</strong></h6>
+                <h6 class="card-title">Total Support Staff: <strong>{{total_support}}</strong></h6>
+                <br>
+                <h6 class="card-title">Non-teaching Staff(Male): <strong>{{total_male_non_teaching}}</strong></h6>
+                <h6 class="card-title">Non-teaching  Staff(Female): <strong>{{total_female_non_teaching}}</strong></h6>
+                <h6 class="card-title">Total Non-teaching Staff: <strong>{{total_non_teaching}}</strong></h6>
+                <br>
+                <h6 class="card-title">ECCDF(Male): </h6>
+                <h6 class="card-title">ECCDF(Female): </h6>
+                <h6 class="card-title">Total ECCDF: </h6>
+                <br>
+                <h6 class="card-title">NFEI(Male): </h6>
+                <h6 class="card-title">NFEI(Female): </h6>
+                <h6 class="card-title">Total NFEI: </h6>  
+                <br>                  
+            </div>
+            <div class="col-lg-4">
+                <h5><strong>Institute</strong></h5>
+                <hr>
+                {% for school in muenseling %}
+                    <h5 class="card-title">
+                        {{ forloop.counter }}. {{school.school}}
+                    </h5>
+                {% endfor %}
+                
+            </div>
+        </div>
+        <br>
+</div>
+{% endblock content %}

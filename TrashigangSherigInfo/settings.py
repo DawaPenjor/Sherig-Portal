@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'SherigApp.apps.SherigappConfig',
     'crispy_forms',
+    'django_filters',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'TrashigangSherigInfo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sherig',
+        'NAME': 'sherig_db',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
@@ -132,12 +133,9 @@ STATICFILES_DIRS = [
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = ''
 
-
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/Uploads')
+MEDIA_URL = '/Uploads/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -154,3 +152,11 @@ MESSAGE_TAGS = {
 }
 
 LOGIN_URL = 'loginUser'
+
+# email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'thewapenjor@education.gov.bt'
+EMAIL_HOST_PASSWORD = 'Dawa@1994'

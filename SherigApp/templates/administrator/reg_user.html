@@ -15,33 +15,37 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 {% endfor %} 
-                <form method="POST">
+                <form method="POST" autocomplete="off">
                     {% csrf_token %} 
-                    <div class="class="form-group"">
+                    <div class="form-group">
                         {{ form.username|as_crispy_field }}
                     </div>
                     <br>
-                    <div class="class="form-group"">
+                    <div class="form-group">
                         {{ form.email|as_crispy_field }}
                     </div>
                     <br>
-                    <div class="class="form-group"">
+                    <div class="form-group">
                         {{ form.school|as_crispy_field }}
                     </div>
                     <br>
-                    <div class="class="form-group"">
+                    <div class="form-group">
                         {{ form.password1|as_crispy_field }}
                     </div>
                     <br>
-                    <div class="class="form-group"">
+                    <div class="form-group">
                         {{ form.password2|as_crispy_field }}
                     </div>
                     <br>
-                    <div class="class="form-group"">
+                    <div class="form-group">
+                        {{ form.is_superuser|as_crispy_field }}
+                    </div>
+                    <br>
+                    <div class="form-group">
                         {{ form.is_school|as_crispy_field }}
                     </div>
                     <br>
-                    <div class="class="form-group"">
+                    <div class="form-group">
                         {{ form.is_dzongkhag|as_crispy_field }}
                     </div>
                     <br>

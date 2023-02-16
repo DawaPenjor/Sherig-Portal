@@ -1,0 +1,116 @@
+{% extends 'school/school_navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{block.super}}
+<div class="parent container d-flex justify-content-center align-items-center h-100 mb-3 mt-3">
+    <div class="child">
+        <div class="card" style="width: 75rem;">
+            
+            <h5 class="card-header bg-info text-dark text-center">Update Staff Detail</h5>
+            <div class="card-body">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %} 
+                <form method="POST" enctype="multipart/form-data" autocomplete="off">
+                    {% csrf_token %} 
+                    <fieldset>
+                    <legend><h5 class="text-center">Personal Detail:</h5></legend>
+                        <div class="row">
+                        <div class="col">
+                            {{form.Employee_ID|as_crispy_field}}
+                        </div>
+                        <div class="col">
+                            {{form.name|as_crispy_field}}
+                        </div>
+                        <div class="col">
+                            {{form.gender|as_crispy_field}}
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                            {{form.date_of_birth|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                            {{form.CID|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                            {{form.nationality|as_crispy_field}}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                            {{form.contact_number|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                            {{form.email|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                            {{form.profile_pic|as_crispy_field}}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                            {{form.permanent_address|as_crispy_field}}
+                            </div>
+                        </div>
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend><h5 class="text-center">Professional Detail:</h5></legend>
+                        <div class="row">
+                            <div class="col">
+                                {{form.category|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                                {{form.position_title|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                                {{form.position_level|as_crispy_field}}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                {{form.grade|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                                {{form.appointment_date|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                                {{form.joining_date_of_present_school|as_crispy_field}}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                {{form.transfered_from|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                                {{form.Employment_type|as_crispy_field}}
+                            </div>
+                            <div class="col">
+                                {{form.subject|as_crispy_field}}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                {{form.qualification|as_crispy_field}}
+                            </div>
+                        </div>
+                        </fieldset>
+                    <br>
+                    <button type="submit" class="btn btn-success">Update Staff</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
